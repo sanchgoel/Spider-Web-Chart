@@ -12,6 +12,8 @@
 		1141FA66251769E600764D5B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1141FA64251769E600764D5B /* Main.storyboard */; };
 		1141FA68251769E900764D5B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1141FA67251769E900764D5B /* Assets.xcassets */; };
 		1141FA6B251769E900764D5B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1141FA69251769E900764D5B /* LaunchScreen.storyboard */; };
+		1141FA752517782800764D5B /* SpiderWebChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1141FA742517782800764D5B /* SpiderWebChartView.swift */; };
+		1141FA7825177A7B00764D5B /* Extension+UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1141FA7725177A7B00764D5B /* Extension+UIColor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		1141FA67251769E900764D5B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1141FA6A251769E900764D5B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1141FA6C251769E900764D5B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../Info.plist; sourceTree = "<group>"; };
+		1141FA742517782800764D5B /* SpiderWebChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpiderWebChartView.swift; sourceTree = "<group>"; };
+		1141FA7725177A7B00764D5B /* Extension+UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIColor.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,7 +61,10 @@
 				1141FA5E251769E600764D5B /* AppDelegate.swift */,
 				1141FA62251769E600764D5B /* ViewController.swift */,
 				1141FA64251769E600764D5B /* Main.storyboard */,
+				1141FA742517782800764D5B /* SpiderWebChartView.swift */,
+				1141FA7625177A5E00764D5B /* Utils */,
 				1141FA72251771DD00764D5B /* Support */,
+				1141FA69251769E900764D5B /* LaunchScreen.storyboard */,
 			);
 			path = "Spider Web Chart";
 			sourceTree = "<group>";
@@ -67,9 +74,16 @@
 			children = (
 				1141FA6C251769E900764D5B /* Info.plist */,
 				1141FA67251769E900764D5B /* Assets.xcassets */,
-				1141FA69251769E900764D5B /* LaunchScreen.storyboard */,
 			);
 			path = Support;
+			sourceTree = "<group>";
+		};
+		1141FA7625177A5E00764D5B /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				1141FA7725177A7B00764D5B /* Extension+UIColor.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -144,7 +158,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				1141FA63251769E600764D5B /* ViewController.swift in Sources */,
+				1141FA752517782800764D5B /* SpiderWebChartView.swift in Sources */,
 				1141FA5F251769E600764D5B /* AppDelegate.swift in Sources */,
+				1141FA7825177A7B00764D5B /* Extension+UIColor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
