@@ -6,7 +6,7 @@ s.name = "SpiderWebChart"
 s.summary = "This project allows you to create a spider web chart with gradient."
 s.requires_arc = true
 
-s.version = "1.0.2"
+s.version = "1.0.3"
 
 s.license = { :type => "MIT", :file => "LICENSE" }
 
