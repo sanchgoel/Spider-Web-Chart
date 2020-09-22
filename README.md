@@ -33,7 +33,7 @@ func addSpiderWebChartView() {
 ```
 
 Sample usage with option to modify various components as per the requirement
-```
+```swift
 func addSpiderWebChartView() {
     // Create a Spider Web Chart View with desired frame
     let graphView = SpiderWebChartView(frame: CGRect(x: 12.5,
