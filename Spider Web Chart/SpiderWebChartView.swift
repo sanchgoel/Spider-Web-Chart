@@ -12,14 +12,13 @@ import UIKit
 class SpiderWebChartView: UIView {
       
   var bgWebColor = UIColor(hex: "#5E6B7F")?.withAlphaComponent(0.8)
-  var parameterLineStrokeColor = UIColor(hex: "#5E6B7F")?.withAlphaComponent(0.8)
   var parameterFont = UIFont(name: "HelveticaNeue-Medium", size: 12.0)
   var parameterFontColor = UIColor.black
   var parameters = [String]()
   var parameterValueTrailingText = ""
   var parameterValues = [CGFloat]()
-  var gradientColors = [UIColor(hex: "309BFF")?.withAlphaComponent(0.9).cgColor,
-                        UIColor(hex: "9848FF")?.withAlphaComponent(0.9).cgColor]
+  var gradientColors = [UIColor(hex: "309BFF"),
+                        UIColor(hex: "9848FF")]
   var gradientLocations: [CGFloat] = [0.0, 1.0]
   var distanceOfLabelsFromCenter: CGFloat = 1.3
   var scale: CGFloat = 100.0
@@ -49,7 +48,7 @@ class SpiderWebChartView: UIView {
       
       path.close()
       
-      parameterLineStrokeColor?.set()
+      bgWebColor?.set()
       path.lineWidth = 1.0
       path.stroke()
     }
@@ -147,7 +146,12 @@ class SpiderWebChartView: UIView {
   
   func addGradient() {
     // create and add the gradient
-    let colors = gradientColors as CFArray
+    var gradientCGColors = [CGColor?]()
+    for color in gradientColors {
+      gradientCGColors.append(color?.withAlphaComponent(0.9).cgColor)
+    }
+    
+    let colors = gradientCGColors as CFArray
         
     let colorSpace = CGColorSpaceCreateDeviceRGB()
     
