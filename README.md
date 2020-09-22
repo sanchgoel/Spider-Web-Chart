@@ -8,7 +8,7 @@ Cocopods Setup
 
 ## How to use
 Sample usage with default values
-``` 
+```swift
 func addSpiderWebChartView() {
     // Create a Spider Web Chart View with desired frame
     let graphView = SpiderWebChartView(frame: CGRect(x: 12.5,
