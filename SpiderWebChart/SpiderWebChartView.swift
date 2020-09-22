@@ -23,7 +23,7 @@ public class SpiderWebChartView: UIView {
   public var distanceOfLabelsFromCenter: CGFloat = 1.3
   public var scale: CGFloat = 100.0
   
-  override func draw(_ rect: CGRect) {
+  public override func draw(_ rect: CGRect) {
     createWebBackground(rect: rect)
     addLinesInDirectionOfParamters(rect: rect)
     plotValues(rect: rect)
