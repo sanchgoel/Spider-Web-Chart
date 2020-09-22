@@ -9,19 +9,19 @@
 import Foundation
 import UIKit
 
-class SpiderWebChartView: UIView {
+public class SpiderWebChartView: UIView {
       
-  var bgWebColor = UIColor(hex: "#5E6B7F")?.withAlphaComponent(0.8)
-  var parameterFont = UIFont(name: "HelveticaNeue-Medium", size: 12.0)
-  var parameterFontColor = UIColor.black
-  var parameters = [String]()
-  var parameterValueTrailingText = ""
-  var parameterValues = [CGFloat]()
-  var gradientColors = [UIColor(hex: "309BFF"),
+  public var bgWebColor = UIColor(hex: "#5E6B7F")?.withAlphaComponent(0.8)
+  public var parameterFont = UIFont(name: "HelveticaNeue-Medium", size: 12.0)
+  public var parameterFontColor = UIColor.black
+  public var parameters = [String]()
+  public var parameterValueTrailingText = ""
+  public var parameterValues = [CGFloat]()
+  public var gradientColors = [UIColor(hex: "309BFF"),
                         UIColor(hex: "9848FF")]
-  var gradientLocations: [CGFloat] = [0.0, 1.0]
-  var distanceOfLabelsFromCenter: CGFloat = 1.3
-  var scale: CGFloat = 100.0
+  public var gradientLocations: [CGFloat] = [0.0, 1.0]
+  public var distanceOfLabelsFromCenter: CGFloat = 1.3
+  public var scale: CGFloat = 100.0
   
   override func draw(_ rect: CGRect) {
     createWebBackground(rect: rect)

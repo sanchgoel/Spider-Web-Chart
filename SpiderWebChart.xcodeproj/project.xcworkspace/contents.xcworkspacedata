@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:Spider Web Chart.xcodeproj">
+      location = "self:/Users/sanchitgoel/Desktop/SpiderWebChart/SpiderWebChart.xcodeproj">
    </FileRef>
 </Workspace>
