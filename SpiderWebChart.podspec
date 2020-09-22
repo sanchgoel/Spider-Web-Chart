@@ -6,7 +6,7 @@ s.name = "SpiderWebChart"
 s.summary = "This project allows you to create a spider web chart with gradient."
 s.requires_arc = true
 
-s.version = "1.0.4"
+s.version = "1.0.5"
 
 s.license = { :type => "MIT", :file => "LICENSE" }
 
@@ -19,7 +19,7 @@ s.source = { :git => "https://github.com/sanchgoel/Spider-Web-Chart.git",
 
 s.framework = "UIKit"
 
-s.source_files = "SpiderWebChart/**/*.{swift}"
+s.source_files = "SpiderWebChart/Utils/**/*.{swift}"
 
 s.swift_version = "5.0"
 

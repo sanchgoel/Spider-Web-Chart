@@ -61,7 +61,6 @@
 				1141FA5E251769E600764D5B /* AppDelegate.swift */,
 				1141FA62251769E600764D5B /* ViewController.swift */,
 				1141FA64251769E600764D5B /* Main.storyboard */,
-				1141FA742517782800764D5B /* SpiderWebChartView.swift */,
 				1141FA7625177A5E00764D5B /* Utils */,
 				1141FA72251771DD00764D5B /* Support */,
 				1141FA69251769E900764D5B /* LaunchScreen.storyboard */,
@@ -81,6 +80,7 @@
 		1141FA7625177A5E00764D5B /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				1141FA742517782800764D5B /* SpiderWebChartView.swift */,
 				1141FA7725177A7B00764D5B /* Extension+UIColor.swift */,
 			);
 			path = Utils;
