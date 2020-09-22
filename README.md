@@ -1,7 +1,7 @@
 # Spider Web Chart
 This project allows you to create a spider web chart with gradient. Screenshots are attached below.
 
-![](https://github.com/sanchgoel/Spider-Web-Chart/blob/master/images/Image.png)
+![](https://github.com/sanchgoel/Spider-Web-Chart/blob/master/images/screenshot.png)
 
 ## Installation Instructions
 Cocopods Setup
