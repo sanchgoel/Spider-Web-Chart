@@ -12,11 +12,24 @@ class ViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    let view = SpiderWebChartView(frame: CGRect(x: 62.5, y: 200, width: 250, height: 250))
-    view.parameters = ["Creativity", "Curiosity", "Eye For Detail", "Enthusiasm", "Patience", "Risk Taking", "Resourcefulness", "Perseverance"]
-    view.parameterValues = [90, 78, 88, 75, 84, 65, 83, 95]
-    view.backgroundColor = UIColor.clear
-    self.view.addSubview(view)
+    addSpiderWebChartView()
   }
-
+  
+  func addSpiderWebChartView() {
+    let graphView = SpiderWebChartView(frame: CGRect(x: 12.5,
+                                                     y: 200,
+                                                     width: 350,
+                                                     height: 350))
+    
+    graphView.parameters = ["Creativity", "Curiosity", "Eye For Detail", "Enthusiasm",
+                            "Patience", "Risk Taking", "Resourcefulness", "Perseverance"]
+    
+    graphView.parameterValues = [0.90, 0.78, 0.88, 0.75, 0.84, 0.65, 0.83, 0.95]
+    
+    graphView.scale = 1
+    
+    graphView.backgroundColor = UIColor.clear
+    
+    self.view.addSubview(graphView)
+  }
 }

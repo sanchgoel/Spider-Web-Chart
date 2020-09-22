@@ -12,19 +12,27 @@ import UIKit
 class SpiderWebChartView: UIView {
       
   var bgWebColor = UIColor(hex: "#5E6B7F")?.withAlphaComponent(0.8)
-  var parameterLineStrokeColor = UIColor(hex: "#707781")?.withAlphaComponent(0.8)
+  var parameterLineStrokeColor = UIColor(hex: "#5E6B7F")?.withAlphaComponent(0.8)
+  var parameterFont = UIFont(name: "HelveticaNeue-Medium", size: 12.0)
+  var parameterFontColor = UIColor.black
   var parameters = [String]()
-  var parameterValues = [Int]()
+  var parameterValueTrailingText = ""
+  var parameterValues = [CGFloat]()
+  var gradientColors = [UIColor(hex: "309BFF")?.withAlphaComponent(0.9).cgColor,
+                        UIColor(hex: "9848FF")?.withAlphaComponent(0.9).cgColor]
+  var gradientLocations: [CGFloat] = [0.0, 1.0]
+  var distanceOfLabelsFromCenter: CGFloat = 1.3
+  var scale: CGFloat = 100.0
   
   override func draw(_ rect: CGRect) {
     createWebBackground(rect: rect)
-    addParamterLines(rect: rect)
+    addLinesInDirectionOfParamters(rect: rect)
     plotValues(rect: rect)
     addParameterLabels(rect: rect)
   }
   
-  func addParamterLines(rect: CGRect) {
-    let radius = rect.width/2
+  func addLinesInDirectionOfParamters(rect: CGRect) {
+    let radius = rect.width/2*0.65
     let center = CGPoint(x: rect.midX, y: rect.midY)
     for count in 0..<parameterValues.count {
       let angularDifference = 360.0/Double(parameterValues.count)
@@ -49,7 +57,7 @@ class SpiderWebChartView: UIView {
   
   func createWebBackground(rect: CGRect) {
     // Set the center and radius of polgons according to the parent view
-    let radius = rect.width/2
+    let radius = rect.width/2*0.65
     let center = CGPoint(x: rect.midX, y: rect.midY)
     drawConcentricBgPolygons(radius: radius, center: center)
   }
@@ -103,13 +111,13 @@ class SpiderWebChartView: UIView {
   func plotValues(rect: CGRect) {
     let path = UIBezierPath()
     
-    let radius = rect.width/2
+    let radius = rect.width/2*0.65
     let center = CGPoint(x: rect.midX, y: rect.midY)
     
     path.lineWidth = 1.0
     UIColor.clear.setStroke()
         
-    let currentParameterValue = CGFloat(parameterValues[0])/100.0
+    let currentParameterValue = parameterValues[0]/scale
     let deltaX = radius*cos(0)*currentParameterValue
     let deltaY = radius*sin(0)*currentParameterValue
     
@@ -123,7 +131,7 @@ class SpiderWebChartView: UIView {
       
       let nextAngle = angularDifference * Double(count) * .pi / 180.0
       
-      let currentParameterValue = CGFloat(parameterValues[count])/100
+      let currentParameterValue = parameterValues[count]/scale
       let nextDeltaX = radius*CGFloat(cos(nextAngle))*currentParameterValue
       let nextDeltaY = radius*CGFloat(sin(nextAngle))*currentParameterValue
       
@@ -139,19 +147,18 @@ class SpiderWebChartView: UIView {
   
   func addGradient() {
     // create and add the gradient
-    let colors = [UIColor(red: 48.0/255.0, green: 155.0/255.0, blue: 255.0/255.0, alpha: 0.8).cgColor,
-                  UIColor(red: 152.0/255.0, green: 72.0/255.0, blue: 255.0/255.0, alpha: 0.8).cgColor] as CFArray
+    let colors = gradientColors as CFArray
         
     let colorSpace = CGColorSpaceCreateDeviceRGB()
     
-    let colorLocations:[CGFloat] = [0.0, 1.0]
+    let colorLocations: [CGFloat] = gradientLocations
         
     guard let gradient = CGGradient(colorsSpace: colorSpace,
                                     colors: colors,
                                     locations: colorLocations) else { return }
     
     guard let context = UIGraphicsGetCurrentContext() else { return }
-    let startPoint = CGPoint(x: 1, y: 1)
+    let startPoint = CGPoint(x: 0, y: 0)
     let endPoint = CGPoint(x: 1, y: bounds.maxY)
     
     // and lastly, draw the gradient.
@@ -162,7 +169,7 @@ class SpiderWebChartView: UIView {
   }
   
   private func addParameterLabels(rect: CGRect) {
-    let radius = rect.width/2
+    let radius = rect.width/2*0.65
     let angularDifference = 360.0/Double(parameterValues.count)
     
     for count in 0..<parameters.count {
@@ -173,19 +180,19 @@ class SpiderWebChartView: UIView {
       addStackView(xDisp: xDisp,
                    yDisp: yDisp,
                    parameterName: parameters[count],
-                   parameterValue: parameterValues[count])
+                   parameterValue: "\(parameterValues[count])\(parameterValueTrailingText)")
     }
   }
   
   func addStackView(xDisp: CGFloat,
                     yDisp: CGFloat,
                     parameterName: String,
-                    parameterValue: Int) {
+                    parameterValue: String) {
     
     // Heading Label
     let parameterLabel = UILabel()
-    parameterLabel.font = UIFont(name: "HelveticaNeue-Medium", size: 12.0)
-    parameterLabel.textColor = UIColor.black
+    parameterLabel.font = parameterFont
+    parameterLabel.textColor = parameterFontColor
     parameterLabel.heightAnchor.constraint(equalToConstant: 16.0).isActive = true
     parameterLabel.widthAnchor.constraint(equalToConstant: 100.0).isActive = true
     parameterLabel.text = parameterName
@@ -193,11 +200,11 @@ class SpiderWebChartView: UIView {
 
     // Value Label
     let parameterValueLabel = UILabel()
-    parameterValueLabel.textColor = UIColor.black
-    parameterValueLabel.font = UIFont(name: "HelveticaNeue-Medium", size: 12.0)
+    parameterValueLabel.textColor = parameterFontColor
+    parameterValueLabel.font = parameterFont
     parameterValueLabel.widthAnchor.constraint(equalToConstant: 100.0).isActive = true
     parameterValueLabel.heightAnchor.constraint(equalToConstant: 16.0).isActive = true
-    parameterValueLabel.text = "\(parameterValue)%"
+    parameterValueLabel.text = "\(parameterValue)"
     parameterValueLabel.textAlignment = .center
 
     // Stack View
@@ -214,7 +221,9 @@ class SpiderWebChartView: UIView {
     self.addSubview(stackView)
 
     // Constraints
-    stackView.centerXAnchor.constraint(equalTo: self.centerXAnchor, constant: xDisp*1.22).isActive = true
-    stackView.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: yDisp*1.22).isActive = true
+    stackView.centerXAnchor.constraint(equalTo: self.centerXAnchor,
+                                       constant: xDisp*distanceOfLabelsFromCenter).isActive = true
+    stackView.centerYAnchor.constraint(equalTo: self.centerYAnchor,
+                                       constant: yDisp*distanceOfLabelsFromCenter).isActive = true
   }
 }
