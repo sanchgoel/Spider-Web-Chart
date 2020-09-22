@@ -5,6 +5,9 @@ This project allows you to create a spider web chart with gradient. Screenshots 
 
 ## Installation Instructions
 Cocopods Setup
+To integrate SpiderWebChart into your Xcode project using CocoaPods, specify it in your Podfile:
+
+``pod 'SpiderWebChart', '~> 1.0.5'``
 
 ## How to use
 Sample usage with default values
